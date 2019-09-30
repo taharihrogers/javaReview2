@@ -22,6 +22,8 @@ public class MyDate {
     public MyDate(long inElapsedTime)
     {
         //put in logic here
+        elapsedTime = inElapsedTime;
+        this.setDate(elapsedTime);
     }
     //constructor based on inputting values
     public MyDate(int inYear, int inDay, int inMonth)
@@ -44,4 +46,31 @@ public class MyDate {
     }
 
     //additional methods
+    public void setDate(long elapsedTime)
+    {
+        //variables
+        int seconds;
+        int minutes;
+        int hours;
+        int days;
+        int years;
+        int remainingDays;
+        int months;
+        int daysFinal;
+
+        //math
+        seconds = (int) (elapsedTime / 1000);
+        minutes = seconds / 60;
+        hours = minutes / 60;
+        days = hours / 24;
+        years = days / 365;
+        remainingDays = days % 365;
+        months = remainingDays / 30;
+        daysFinal = remainingDays % 30;
+
+        //setting values
+        year = years;
+        day = days;
+        month = months;
+    }
 }
