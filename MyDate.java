@@ -49,17 +49,17 @@ public class MyDate {
     public void setDate(long elapsedTime)
     {
         //variables
-        int seconds;
-        int minutes;
-        int hours;
-        int days;
-        int years;
-        int remainingDays;
-        int months;
-        int daysFinal;
+        long seconds;
+        long minutes;
+        long hours;
+        long days;
+        long years;
+        long remainingDays;
+        long months;
+        long daysFinal;
 
         //math
-        seconds = (int) (elapsedTime / 1000);
+        seconds = elapsedTime / 1000;
         minutes = seconds / 60;
         hours = minutes / 60;
         days = hours / 24;
@@ -69,8 +69,15 @@ public class MyDate {
         daysFinal = remainingDays % 30;
 
         //setting values
-        year = years;
-        day = days;
-        month = months;
+        year = (int) (years + 1970);
+        day = (int) (remainingDays - (years * .25) - 1);
+        if(day < 0)
+        {
+            //fixing the value of day
+            year = year - 1;
+            day += 365;
+            day = day % 12;
+        }
+        month = (int) months;
     }
 }
